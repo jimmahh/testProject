@@ -1,0 +1,59 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:ap="http://iwaysoftware.com/ap/ism" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:channelName="http://iwaysoftware.com/ism/channels/channelName" xmlns:ibsp="urn:schemas-iwaysoftware-com:iwse" xmlns:channel="http://iwaysoftware.com/ibsp/channel/common" targetNamespace="http://iwaysoftware.com/ism/channels/channelName">
+	<import namespace="http://iwaysoftware.com/ap/ism" location="iwayservices.wsdl"/>
+	<types>
+		<xs:schema targetNamespace="http://iwaysoftware.com/ism/channels/channelName">
+			<xs:import namespace="urn:schemas-iwaysoftware-com:iwse" schemaLocation="../../ibspcommon.xsd"/>
+			<xs:import namespace="http://iwaysoftware.com/ibsp/channel/common" schemaLocation="channelcommon.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="channelRequest">
+		<part name="input" type="xs:base64Binary"/>
+	</message>
+	<message name="channelResponse">
+		<part name="output" type="xs:string"/>
+	</message>
+	<message name="logicalException">
+		<part name="message" element="channel:LogicalException"/>
+	</message>
+	<message name="physicalException">
+		<part name="message" element="channel:PhysicalException"/>
+	</message>
+	<message name="Header">
+		<part name="header" element="ibsp:ibsinfo"/>
+	</message>
+	<portType name="channel">
+		<operation name="execute">
+			<input message="channelName:channelRequest"/>
+			<output message="channelName:channelResponse"/>
+			<fault name="logicalException" message="channelName:logicalException"/>
+			<fault name="physicalException" message="channelName:physicalException"/>
+		</operation>
+	</portType>
+	<binding name="channel" type="channelName:channel">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="execute">
+			<soap:operation soapAction="urn:#execute"/>
+			<input>
+				<soap:body use="literal"/>
+				<soap:header message="Header" part="ibsp:Header" use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="logicalException">
+				<soap:fault name="LogicalExceptionFault" use="literal"/>
+			</fault>
+			<fault name="physicalException">
+				<soap:fault name="PhysicalExceptionFault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="channel">
+		<port name="channel" binding="channelName:channel">
+			<soap:address location="http://localhost:9000/XDSOAPChannel/channelName"/>
+		</port>
+		<port name="ap" binding="ap:ap">
+			<soap:address location="http://localhost:9000/XDSOAPChannel/channelName"/>
+		</port>
+	</service>
+</definitions>

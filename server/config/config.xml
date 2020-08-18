@@ -1,0 +1,48 @@
+<IWAYCONFIG version="6.1">
+   <Configurations master="base">
+      <Configuration port="9999" name="base" current_version="1.0" description="">
+         <Instances>
+            <Instance version="1.0" location="./config/base/" label="" dictionary="base.xml" hidden="false">
+               <Properties>
+                  <Property name="POST_CLASSPATH" description="external classes to be appended to classpath" value=""/>
+                  <Property name="PRE_CLASSPATH" description="external classes to be prepended to class path" value=""/>
+                  <Property name="JVM_OPTION" description="options to be applied at jvm startup" value=""/>
+                  <Property name="JAVA_LIB_PATH" description="dlls to be added to java.library.path" value=""/>
+                  <Property name="SECURE" description="signals the server to run the admin port in secure mode" value = "false"/>
+                  <Property name="KEYSTORE" description="location of keystore file to be used in secure mode" value=""/>
+                  <Property name="KEYSTORE_PWD" description="password to access the keystore" value=""/>
+                  <Property name="KEYSTORE_TYPE" description="type of the keystore" value=""/>
+                  <Property name="NT_DEPENDENCIES" description="list of services which must start first before iSM" value=""/>
+              </Properties>
+            </Instance>
+         </Instances>
+      </Configuration>
+      <Configuration port="81" name="raw" current_version="1.0" description="" hidden="true">
+         <Instances>
+            <Instance version="1.0" location="./config/raw/" label="" dictionary="raw.xml">
+               <Properties>
+                  <Property name="POST_CLASSPATH" description="external classes to be appended to classpath" value=""/>
+                  <Property name="PRE_CLASSPATH" description="external classes to be prepended to class path" value=""/>
+                  <Property name="JVM_OPTION" description="options to be applied at jvm startup" value=""/>
+                  <Property name="JAVA_LIB_PATH" description="dlls to be added to java.library.path" value=""/>
+                  <Property name="SECURE" description="signals the server to run the admin port in secure mode" value = "false"/>
+                  <Property name="KEYSTORE" description="location of keystore file to be used in secure mode" value=""/>
+                  <Property name="KEYSTORE_PWD" description="password to access the keystore" value=""/>
+                  <Property name="KEYSTORE_TYPE" description="type of the keystore" value=""/>
+                  <Property name="NT_DEPENDENCIES" description="list of services which must start first before iSM" value=""/>
+            </Properties>
+            </Instance>
+         </Instances>
+      </Configuration>
+   </Configurations>
+   <Users admin="iway,admin">
+      <User name="iway" fullName="iway" description="primary user" password="ENCR(3221324531043128312232252993153)" restart="true" stop="true" create="true" delete="true"/>
+      <User name="admin" fullName="admin" description="administrator" password="ENCR(3157318132323177321823331003249221)" restart="true" stop="true" create="true" delete="true"/>
+   </Users>
+   <Groups>
+      <Group name="group1">
+           <User name="iway" /> 
+      </Group>
+   </Groups>
+   <ACLS/>
+</IWAYCONFIG>

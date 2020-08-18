@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by ibi (Information Builders) -->
+<xs:schema targetNamespace="urn:schemas-iwaysoftware-com:iwse" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-iwaysoftware-com:iwse" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="ibsinfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="service" type="xs:string"/>
+				<xs:element name="method" type="xs:string"/>
+				<xs:element name="license" type="xs:string"/>
+				<xs:element name="disposition" type="xs:string" minOccurs="0"/>
+				<xs:element name="Username" type="xs:string" minOccurs="0"/>
+				<xs:element name="Password" type="xs:string" minOccurs="0"/>
+				<xs:element name="language" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="adapterexception">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="error" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IBO">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:name"/>
+				<xs:element ref="tns:description"/>
+				<xs:element ref="tns:modified"/>
+				<xs:element ref="tns:wsdl"/>
+				<xs:element ref="tns:methods"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IBOLIST">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:IBO" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="license" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="description" type="xs:string"/>
+	<xs:element name="methods" type="xs:string"/>
+	<xs:element name="modified" type="xs:dateTime"/>
+	<xs:element name="name" type="xs:string"/>
+	<xs:element name="wsdl" type="xs:string"/>
+</xs:schema>

@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<iWayBusinessService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="iwcontrol">
+	<abstract>iWay Business Service Provider &lt;B&gt;(iBSP)&lt;/B&gt; Management and Monitoring Service</abstract>
+	<description>iWay Business Service Provider &lt;B&gt;(iBSP)&lt;/B&gt; Management and Monitoring Service</description>
+	<location>admin/iwcontrol.ibs</location>
+	<address>BSEControl</address>
+	<license>admin</license>
+	<operations>
+		<method name="GetServiceState" type="ADPRPC">
+			<abstract>Use this method to retrieve the state of a particular web service</abstract>
+			<description>Use this method to retrieve the state of a particular web service</description>
+			<input>
+				<paramlist>
+					<parameter name="ServiceName" type="string" description="service name"/>
+				</paramlist>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="GetServiceState">
+						<xs:annotation>
+							<xs:documentation>Use this method to retrieve the state of a particular web service</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ServiceName" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:complexType name="ServiceStateType">
+						<xs:sequence>
+							<xs:element name="ModifiedAt" type="xs:dateTime"/>
+							<xs:element name="State" type="tns:ServiceState"/>
+						</xs:sequence>
+					</xs:complexType>
+					<xs:simpleType name="ServiceState">
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="SUSPENDED"/>
+							<xs:enumeration value="READY"/>
+						</xs:restriction>
+					</xs:simpleType>
+					<xs:simpleType name="EventState">
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="SUSPENDED"/>
+							<xs:enumeration value="READY"/>
+							<xs:enumeration value="STARTED"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:schema>
+			</input>
+			<output>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="GetServiceStateResponse" type="tns:ServiceStateType">
+						<xs:annotation>
+							<xs:documentation>Use this method to retrieve the state of a particular web service</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:schema>
+			</output>
+		</method>
+		<method name="SuspendService" type="ADPRPC">
+			<abstract>Use this method to suspend a web service</abstract>
+			<description>Use this method to suspend a web service</description>
+			<input>
+				<paramlist>
+					<parameter name="ServiceName" type="string" description="service name"/>
+				</paramlist>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="SuspendService">
+						<xs:annotation>
+							<xs:documentation>Use this method to suspend a web service</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ServiceName" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:schema>
+			</input>
+			<output>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="SuspendServiceResponse" type="tns:ServiceStateType">
+						<xs:annotation>
+							<xs:documentation>Use this method to suspend a web service</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:schema>
+			</output>
+		</method>
+		<method name="ResumeService" type="ADPRPC">
+			<abstract>Use this method to resume a web service</abstract>
+			<description>Use this method to resume a web service</description>
+			<input>
+				<paramlist>
+					<parameter name="ServiceName" type="string" description="service name"/>
+				</paramlist>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="ResumeService">
+						<xs:annotation>
+							<xs:documentation>Use this method to resume a web service</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ServiceName" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:schema>
+			</input>
+			<output>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="ResumeServiceResponse" type="tns:ServiceStateType">
+						<xs:annotation>
+							<xs:documentation>Use this method to resume a web service</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:schema>
+			</output>
+		</method>
+		<method name="GetChannelState" type="ADPRPC">
+			<abstract>Use this method to retrieve the state of a particular channel</abstract>
+			<description>Use this method to retrieve the state of a particular channel</description>
+			<input>
+				<paramlist>
+					<parameter name="ChannelName" type="string" description="channel name"/>
+				</paramlist>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="GetChannelState">
+						<xs:annotation>
+							<xs:documentation>Use this method to retrieve the state of a particular channel</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ChannelName" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:schema>
+			</input>
+			<output>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="GetChannelStateResponse" type="tns:ChannelStateType">
+						<xs:annotation>
+							<xs:documentation>Use this method to retrieve the state of a particular channel</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:complexType name="ChannelStateType">
+						<xs:sequence>
+							<xs:element name="ModifiedAt" type="xs:dateTime"/>
+							<xs:element name="ClusterID" type="xs:string"/>
+							<xs:element name="state" type="tns:EventState"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:schema>
+			</output>
+		</method>
+		<method name="SuspendChannel" type="ADPRPC">
+			<abstract>Use this method to suspend a channel</abstract>
+			<description>Use this method to suspend a channel</description>
+			<input>
+				<paramlist>
+					<parameter name="ChannelName" type="string" description="channel name"/>
+				</paramlist>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="SuspendChannel">
+						<xs:annotation>
+							<xs:documentation>Use this method to suspend a channel</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ChannelName" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:schema>
+			</input>
+			<output>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="SuspendChannelResponse" type="tns:ChannelStateType">
+						<xs:annotation>
+							<xs:documentation>Use this method to suspend a channel</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:schema>
+			</output>
+		</method>
+		<method name="ResumeChannel" type="ADPRPC">
+			<abstract>Use this method to resume a channel</abstract>
+			<description>Use this method to resume a channel</description>
+			<input>
+				<paramlist>
+					<parameter name="ChannelName" type="string" description="channel name"/>
+				</paramlist>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="ResumeChannel">
+						<xs:annotation>
+							<xs:documentation>Use this method to resume a channel</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ChannelName" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:schema>
+			</input>
+			<output>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="ResumeChannelResponse" type="tns:ChannelStateType">
+						<xs:annotation>
+							<xs:documentation>Use this method to resume a channel</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:schema>
+			</output>
+		</method>
+		<method name="StartChannel" type="ADPRPC">
+			<abstract>Use this method to start a channel</abstract>
+			<description>Use this method to start a channel</description>
+			<input>
+				<paramlist>
+					<parameter name="ChannelName" type="string" description="channel name"/>
+				</paramlist>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="StartChannel">
+						<xs:annotation>
+							<xs:documentation>Use this method to start a channel</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ChannelName" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:schema>
+			</input>
+			<output>
+				<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="urn:iwaysoftware:ibse:jul2004:iwcontrol">
+					<xs:element name="StartChannelResponse" type="tns:ChannelStateType">
+						<xs:annotation>
+							<xs:documentation>Use this method to start a channel</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:schema>
+			</output>
+		</method>
+	</operations>
+</iWayBusinessService>

@@ -1,0 +1,590 @@
+<?xml version="1.0"?>
+<iWayBusinessService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="iwregistry" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<abstract>abstract</abstract>
+	<description>description</description>
+	<location>admin/iwregistry.ibs</location>
+	<address>ISMRegistry</address>
+	<license>admin</license>
+	<operations>
+		<method name="GetComponents" type="ADAPTER">
+			<abstract>Use this method to retrieve components with optional filtering</abstract>
+			<description>Use this method to retrieve components with optional filtering</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetComponentsGeneric" type="ADAPTER">
+			<abstract>Use this method to retrieve components with optional filtering; components are returned in a generic manner</abstract>
+			<description>Use this method to retrieve components with optional filtering; components are returned in a generic manner</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetComponentFiles" type="ADAPTER">
+			<abstract>Use this method to retrieve data files associated with a component</abstract>
+			<description>Use this method to retrieve data files associated with a component</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddAdapter" type="ADAPTER">
+			<abstract>Use this method to add an adapter component</abstract>
+			<description>Use this method to add an adapter component</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateAdapter" type="ADAPTER">
+			<abstract>Use this method to update an adapter component</abstract>
+			<description>Use this method to update an adapter component</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+    <method name="AddApplicationArchive" type="ADAPTER">
+      <abstract>Use this method to add an application archive</abstract>
+      <description>Use this method to add an application archive</description>
+      <input>
+        <paramlist/>
+        <xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+          <xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+        </xs:schema>
+      </input>
+    </method>
+    <method name="AddApplicationArchiveV2" type="ADAPTER">
+      <abstract>Use this method to add an application archive</abstract>
+      <description>Use this method to add an application archive</description>
+      <input>
+        <paramlist/>
+        <xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+          <xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+        </xs:schema>
+      </input>
+    </method>
+		<method name="GetChannel" type="ADAPTER">
+			<abstract>Use this method to retrieve a channel given a UID</abstract>
+			<description>Use this method to retrieve a channel given a UID</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddChannel" type="ADAPTER">
+			<abstract>Use this method to add a new channel</abstract>
+			<description>Use this method to add a new channel</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateChannel" type="ADAPTER">
+			<abstract>Use this method to update a channel</abstract>
+			<description>Use this method to update a channel</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddDecryptor" type="ADAPTER">
+			<abstract>Use this method to add a new decryptor definition</abstract>
+			<description>Use this method to add a new decryptor definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateDecryptor" type="ADAPTER">
+			<abstract>Use this method to update a decryptor</abstract>
+			<description>Use this method to update a decryptor</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddEbix" type="ADAPTER">
+			<abstract>Use this method to add a new ebix definition</abstract>
+			<description>Use this method to add a new ebix definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddEbixV2" type="ADAPTER">
+			<abstract>Use this method to add a new ebix definition</abstract>
+			<description>Use this method to add a new ebix definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateEbix" type="ADAPTER">
+			<abstract>Use this method to update a ebix</abstract>
+			<description>Use this method to update a ebix</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateEbixV2" type="ADAPTER">
+			<abstract>Use this method to update a ebix</abstract>
+			<description>Use this method to update a ebix</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddEmitter" type="ADAPTER">
+			<abstract>Use this method to add a new emitter definition</abstract>
+			<description>Use this method to add a new emitter definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateEmitter" type="ADAPTER">
+			<abstract>Use this method to update a emitter</abstract>
+			<description>Use this method to update a emitter</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddEncryptor" type="ADAPTER">
+			<abstract>Use this method to add a new encryptor definition</abstract>
+			<description>Use this method to add a new encryptor definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateEncryptor" type="ADAPTER">
+			<abstract>Use this method to update a encryptor</abstract>
+			<description>Use this method to update a encryptor</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetInlet" type="ADAPTER">
+			<abstract>Use this method to retrieve a inlet given a UID</abstract>
+			<description>Use this method to retrieve a inlet given a UID</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddInlet" type="ADAPTER">
+			<abstract>Use this method to add a new inlet</abstract>
+			<description>Use this method to add a new inlet</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateInlet" type="ADAPTER">
+			<abstract>Use this method to update a inlet</abstract>
+			<description>Use this method to update a inlet</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddListener" type="ADAPTER">
+			<abstract>Use this method to add a new listener definition</abstract>
+			<description>Use this method to add a new listener definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateListener" type="ADAPTER">
+			<abstract>Use this method to update a listener</abstract>
+			<description>Use this method to update a listener</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddOther" type="ADAPTER">
+			<abstract>Use this method to add a new other definition</abstract>
+			<description>Use this method to add a new other definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateOther" type="ADAPTER">
+			<abstract>Use this method to update a other</abstract>
+			<description>Use this method to update a other</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetOutlet" type="ADAPTER">
+			<abstract>Use this method to retrieve a outlet given a UID</abstract>
+			<description>Use this method to retrieve a outlet given a UID</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddOutlet" type="ADAPTER">
+			<abstract>Use this method to add a new outlet</abstract>
+			<description>Use this method to add a new outlet</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateOutlet" type="ADAPTER">
+			<abstract>Use this method to update a outlet</abstract>
+			<description>Use this method to update a outlet</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddParameter" type="ADAPTER">
+			<abstract>Use this method to add a new parameter definition</abstract>
+			<description>Use this method to add a new parameter definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateParameter" type="ADAPTER">
+			<abstract>Use this method to update a parameter</abstract>
+			<description>Use this method to update a parameter</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddPreemitter" type="ADAPTER">
+			<abstract>Use this method to add a new preemitter definition</abstract>
+			<description>Use this method to add a new preemitter definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdatePreemitter" type="ADAPTER">
+			<abstract>Use this method to update a preemitter</abstract>
+			<description>Use this method to update a preemitter</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddPreparser" type="ADAPTER">
+			<abstract>Use this method to add a new preparser definition</abstract>
+			<description>Use this method to add a new preparser definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdatePreparser" type="ADAPTER">
+			<abstract>Use this method to update a preparser</abstract>
+			<description>Use this method to update a preparser</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetProcess" type="ADAPTER">
+			<abstract>Use this method to retrieve a process given a UID</abstract>
+			<description>Use this method to retrieve a process given a UID</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddProcess" type="ADAPTER">
+			<abstract>Use this method to add a new process</abstract>
+			<description>Use this method to add a new process</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateProcess" type="ADAPTER">
+			<abstract>Use this method to update a process</abstract>
+			<description>Use this method to update a process</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddRegister" type="ADAPTER">
+			<abstract>Use this method to add a new register definition</abstract>
+			<description>Use this method to add a new register definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateRegister" type="ADAPTER">
+			<abstract>Use this method to update a register</abstract>
+			<description>Use this method to update a register</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddReviewer" type="ADAPTER">
+			<abstract>Use this method to add a new reviewer definition</abstract>
+			<description>Use this method to add a new reviewer definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateReviewer" type="ADAPTER">
+			<abstract>Use this method to update a reviewer</abstract>
+			<description>Use this method to update a reviewer</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetRoute" type="ADAPTER">
+			<abstract>Use this method to retrieve a route given a UID</abstract>
+			<description>Use this method to retrieve a route given a UID</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddRoute" type="ADAPTER">
+			<abstract>Use this method to add a new route</abstract>
+			<description>Use this method to add a new route</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateRoute" type="ADAPTER">
+			<abstract>Use this method to update a route</abstract>
+			<description>Use this method to update a route</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddRule" type="ADAPTER">
+			<abstract>Use this method to add a new rule</abstract>
+			<description>Use this method to add a new rule</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateRule" type="ADAPTER">
+			<abstract>Use this method to update a rule</abstract>
+			<description>Use this method to update a rule</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddSchema" type="ADAPTER">
+			<abstract>Use this method to add a new schema</abstract>
+			<description>Use this method to add a new schema</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateSchema" type="ADAPTER">
+			<abstract>Use this method to update a schema</abstract>
+			<description>Use this method to update a schema</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetSchemaElements" type="ADAPTER">
+			<abstract>Use this method to get information about xml elements associated with this schema definition</abstract>
+			<description>Use this method to get information about xml elements associated with this schema definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddService" type="ADAPTER">
+			<abstract>Use this method to add a new service</abstract>
+			<description>Use this method to add a new service</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateService" type="ADAPTER">
+			<abstract>Use this method to update a service</abstract>
+			<description>Use this method to update a service</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddTransform" type="ADAPTER">
+			<abstract>Use this method to add a new transform</abstract>
+			<description>Use this method to add a new transform</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateTransform" type="ADAPTER">
+			<abstract>Use this method to update a transform</abstract>
+			<description>Use this method to update a transform</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetTransformer" type="ADAPTER">
+			<abstract>Use this method to retrieve a transformer given a UID</abstract>
+			<description>Use this method to retrieve a transformer given a UID</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="AddTransformer" type="ADAPTER">
+			<abstract>Use this method to add a new transformer</abstract>
+			<description>Use this method to add a new transformer</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="UpdateTransformer" type="ADAPTER">
+			<abstract>Use this method to update a transformer</abstract>
+			<description>Use this method to update a transformer</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="configsm/schemas/registry.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+	</operations>
+</iWayBusinessService>

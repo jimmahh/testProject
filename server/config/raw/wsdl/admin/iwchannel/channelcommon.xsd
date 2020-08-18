@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by ibi (Information Builders) -->
+<xs:schema targetNamespace="http://iwaysoftware.com/ibsp/channel/common" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="LogicalException" type="xs:string"/>
+	<xs:element name="PhysicalException" type="xs:string"/>
+	<xs:element name="request">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:any/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:any/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

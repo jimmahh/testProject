@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<iWayBusinessService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="iwchannel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<abstract>abstract</abstract>
+	<description>description</description>
+	<location>admin/iwchannel.ibs</location>
+	<address>XDSOAPChannel</address>
+	<license>admin</license>
+	<operations>
+		<method name="ADDWS" type="ADAPTER">
+			<abstract/>
+			<description/>
+			<input>
+				<paramlist/>
+				<xs:schema>
+					<xs:import namespace="urn:schemas-iwaysoftware-com:iwse" schemaLocation="../../ibspcommon.xsd"/>
+					<xs:import namespace="http://consolesm.ibi.com/xml/repository" schemaLocation="../iwregistry/consolesm/schemas/repository.xsd"/>
+					<xs:import namespace="http://iwaysoftware.com/ibsp/xdchannel" schemaLocation="xdchannel.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="DeleteWS" type="ADPRPC">
+			<abstract/>
+			<description/>
+			<input>
+				<paramlist>
+					<parameter name="serviceName" type="string" description="service name"/>
+				</paramlist>
+			</input>
+		</method>
+		<method name="isAvailableByServiceName" type="ADPRPC">
+			<abstract/>
+			<description/>
+			<input>
+				<paramlist>
+					<parameter name="serviceName" type="string" description="service name"/>
+				</paramlist>
+			</input>
+		</method>
+	</operations>
+</iWayBusinessService>

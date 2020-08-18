@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:schemas-iwaysoftware-com:iwpf" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:schemas-iwaysoftware-com:iwpf" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="GETPFLOWLIST">
+		<xs:annotation>
+			<xs:documentation>Request to get list of process flows.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="GETPFLOWLISTResponse">
+		<xs:annotation>
+			<xs:documentation>Response of GETPFLOWLIST</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PFLOW" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GETPFLOWDETAIL">
+		<xs:annotation>
+			<xs:documentation>Request to get detail of a particular process flow</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="pflow" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="GETPFLOWDETAILResponse">
+		<xs:annotation>
+			<xs:documentation>Response of GETPFLOWDETAIL</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="requestSchema">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:any namespace="##any" processContents="skip"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="responseSchema">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:any namespace="##any" processContents="skip"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="requestRoot" type="xs:string"/>
+				<xs:element name="responseRoot" type="xs:string"/>
+				<xs:element name="description" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RUNPFLOW">
+		<xs:annotation>
+			<xs:documentation>Request to run a particular process flow</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="pflow" type="xs:string"/>
+				<xs:element name="indoc">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:any namespace="##any" processContents="skip"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RUNPFLOWResponse">
+		<xs:annotation>
+			<xs:documentation>Response of RUNPFLOW</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="outdoc">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:any namespace="##any" processContents="skip"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

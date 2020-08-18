@@ -1,0 +1,78 @@
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:iway="http://iwaysoftware.com/ap/ism" targetNamespace="http://iwaysoftware.com/ap/ism">
+	<types>
+		<xs:schema targetNamespace="http://iwaysoftware.com/ap/ism">
+			<xs:element name="error" type="xs:string"/>
+		</xs:schema>
+	</types>
+	<message name="aprequest"/>
+	<message name="apByNameRequest">
+		<part name="serviceName" type="xs:string"/>
+	</message>
+	<message name="apresponse">
+		<part name="isup" type="xs:boolean"/>
+	</message>
+	<message name="ServiceDoesNotExist">
+		<part name="error" element="iway:error"/>
+	</message>
+	<message name="FatalNoRetry">
+		<part name="error" element="iway:error"/>
+	</message>
+	<message name="ErrorRetry">
+		<part name="error" element="iway:error"/>
+	</message>
+	<portType name="ap">
+		<operation name="isAvailable">
+			<input message="iway:aprequest"/>
+			<output message="iway:apresponse"/>
+			<fault name="ServiceDoesNotExsit" message="iway:ServiceDoesNotExist"/>
+			<fault name="ErrorRetry" message="iway:ErrorRetry"/>
+			<fault name="FatalNoRetry" message="iway:FatalNoRetry"/>
+		</operation>
+		<operation name="isAvailableByServiceName">
+			<input message="iway:apByNameRequest"/>
+			<output message="iway:apresponse"/>
+			<fault name="ServiceDoesNotExsit" message="iway:ServiceDoesNotExist"/>
+			<fault name="ErrorRetry" message="iway:ErrorRetry"/>
+			<fault name="FatalNoRetry" message="iway:FatalNoRetry"/>
+		</operation>
+	</portType>
+	<binding name="ap" type="iway:ap">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="isAvailable">
+			<soap:operation soapAction="iwchannel.isAvailable@channels@@"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="ServiceDoesNotExsit">
+				<soap:fault name="ServiceDoesNotExsit" use="literal"/>
+			</fault>
+			<fault name="ErrorRetry">
+				<soap:fault name="ErrorRetryFault" use="literal"/>
+			</fault>
+			<fault name="FatalNoRetry">
+				<soap:fault name="FatalNoRetryFault" use="literal"/>
+			</fault>
+		</operation>
+		<operation name="isAvailableByServiceName">
+			<soap:operation soapAction="iwchannel.isAvailableByServiceName@channels@@"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="ServiceDoesNotExsit">
+				<soap:fault name="ServiceDoesNotExistFault" use="literal"/>
+			</fault>
+			<fault name="ErrorRetry">
+				<soap:fault name="ErrorRetryFault" use="literal"/>
+			</fault>
+			<fault name="FatalNoRetry">
+				<soap:fault name="FatalNoRetryFault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+</definitions>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iwresource:IWResource xmlns:iwresource="http://iwresource.iwaysoftware.com/model/emf/iwresource">
+  <Name>bundle</Name>
+  <Type>application</Type>
+  <File>bundle.iab</File>
+  <Description></Description>
+  <GUID>DB63AB904C34B6C502B673666FC26FDB</GUID>
+  <targetServer>8.0.3</targetServer>
+</iwresource:IWResource>
