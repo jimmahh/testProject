@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Artem Portnoy (Information Builders) -->
+<schema targetNamespace="http://consolesm.ibi.com/xml/repository" xmlns:repo="http://consolesm.ibi.com/xml/repository" xmlns="http://www.w3.org/2001/XMLSchema">
+	<simpleType name="componentTypeEnum">
+		<restriction base="string">
+			<enumeration value="adapter"/>
+			<enumeration value="channel"/>
+			<enumeration value="decryptor"/>
+			<enumeration value="ebix"/>
+			<enumeration value="emitter"/>
+			<enumeration value="encryptor"/>
+			<enumeration value="rule"/>
+			<enumeration value="inlet"/>
+			<enumeration value="listener"/>
+			<enumeration value="other"/>
+			<enumeration value="outlet"/>
+			<enumeration value="parameter"/>
+			<enumeration value="preemitter"/>
+			<enumeration value="preparser"/>
+			<enumeration value="process"/>
+			<enumeration value="register"/>
+			<enumeration value="reviewer"/>
+			<enumeration value="route"/>
+			<enumeration value="schema"/>
+			<enumeration value="service"/>
+			<enumeration value="transform"/>
+			<enumeration value="transformer"/>
+			<enumeration value="car"/>
+		</restriction>
+	</simpleType>
+	<complexType name="ComponentType">
+		<sequence>
+			<element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<attribute name="name" type="string" use="required"/>
+					<attribute name="value" type="string" use="required"/>
+					<attribute name="type" use="optional">
+						<simpleType>
+							<restriction base="string">
+								<enumeration value="boolean"/>
+								<enumeration value="duration"/>
+								<enumeration value="float"/>
+								<enumeration value="integer"/>
+								<enumeration value="password"/>
+								<enumeration value="string"/>
+							</restriction>
+						</simpleType>
+					</attribute>
+					<attribute name="description" type="string" use="optional"/>
+				</complexType>
+			</element>
+		</sequence>
+		<attribute name="uid" type="string" use="required"/>
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="description" type="string" use="optional"/>
+		<attribute name="className" type="string" use="optional"/>
+		<attribute name="creationDate" type="dateTime" use="required"/>
+		<attribute name="modifiedDate" type="dateTime" use="required"/>
+		<attribute name="builtOn" type="anyURI" use="required"/>
+		<attribute name="user" type="string" use="required"/>
+		<attribute name="targetServer" type="string" use="required"/>
+	</complexType>
+	<complexType name="ExitType">
+		<complexContent>
+			<extension base="repo:ComponentType">
+				<sequence>
+					<element name="ParameterRef" minOccurs="0" maxOccurs="unbounded">
+						<complexType>
+							<complexContent>
+								<extension base="repo:ReferenceType"/>
+							</complexContent>
+						</complexType>
+					</element>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ReferenceType">
+		<attribute name="refId" type="string" use="required"/>
+	</complexType>
+	<element name="rAdapter">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rChannel">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<sequence>
+						<element name="InletRef" minOccurs="0">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="RouteRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType">
+										<attribute name="isDefault" type="boolean" use="required"/>
+										<attribute name="condition" type="string" use="optional"/>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="OutletRef" type="repo:OutletRefType" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="RegisterRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="EbixRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="ParameterRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+					<attribute name="lastBuildNumber" type="long" use="optional"/>
+					<attribute name="type" use="required">
+						<simpleType>
+							<restriction base="string">
+								<enumeration value="dynamic"/>
+								<enumeration value="fixed"/>
+							</restriction>
+						</simpleType>
+					</attribute>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rDecryptor">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ExitType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rEbix">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rEmitter">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<sequence>
+						<element name="ParameterRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rEncryptor">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ExitType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rRule">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rInlet">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<sequence>
+						<element name="ListenerRef" minOccurs="0">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="DecryptorRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="PreparserRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rListener">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rOther">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<attribute name="category" type="string" use="required"/>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rOutlet">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<sequence>
+						<element name="EncryptorRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="PreemitterRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="EmitterRef" minOccurs="0">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rParameter">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rPreemitter">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ExitType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rPreparser">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ExitType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rProcess">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<sequence>
+						<element name="ServiceRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType">
+										<attribute name="adapter" type="boolean" use="required"/>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+					<attribute name="pflow" type="boolean" use="required"/>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rRegister">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rReviewer">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ExitType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rRoute">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<sequence>
+						<element name="InTransformerRef" minOccurs="0">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="ProcessRef" minOccurs="0">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="OutTransformerRef" minOccurs="0">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="OutletRef" type="repo:OutletRefType" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rSchema">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rService">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ExitType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rTransform">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="rTransformer">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<sequence>
+						<element name="ReviewerRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="RuleRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="TransformRef" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="repo:ReferenceType"/>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<complexType name="OutletRefType">
+		<complexContent>
+			<extension base="repo:ReferenceType">
+				<attribute name="executes" use="required">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="onError"/>
+							<enumeration value="onSuccess"/>
+						</restriction>
+					</simpleType>
+				</attribute>
+				<attribute name="condition" type="string" use="optional"/>
+			</extension>
+		</complexContent>
+	</complexType>
+	<element name="rChannelDescriptor">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<sequence>
+						<element ref="repo:rChannel"/>
+						<element ref="repo:rInlet"/>
+						<element ref="repo:rListener"/>
+						<element ref="repo:rDecryptor" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rPreparser" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rRoute" maxOccurs="unbounded"/>
+						<element ref="repo:rTransformer" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rTransform" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rRule" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rSchema" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rReviewer" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rProcess" maxOccurs="unbounded"/>
+						<element ref="repo:rAdapter" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rService" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rOutlet" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rPreemitter" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rEncryptor" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rEmitter" maxOccurs="unbounded"/>
+						<element ref="repo:rParameter" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rRegister" minOccurs="0" maxOccurs="unbounded"/>
+						<element ref="repo:rEbix" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+					<attribute name="buildNumber" type="long" use="required"/>
+					<attribute name="autodeploy" type="boolean" use="required"/>
+					<attribute name="isChannel" type="boolean" use="required"/>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+</schema>

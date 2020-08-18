@@ -1,0 +1,86 @@
+
+<edaxml version="6.0" xmlns:eda="http://iwaysoftware.com">
+   <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+         <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+         <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+         <Reference URI="">
+            <Transforms>
+               <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+            <DigestValue>7n7JBATXEDKCvFna74C+MHpzmuI=</DigestValue>
+         </Reference>
+      </SignedInfo>
+      <SignatureValue>YZLB4m3FVEffSuz3z7enGCE3Vs24mz780uENI1zt8ELLfnzl/+QNNzU6ZZNPlhPPEXTeD/8a4Pb4
+87KNguGmpNvsoLnbHDZj1vFNbz79BN165feCfaccjVeWDOjmyh6kMX3+4fZc8NsbVRNApceFfjNp
+pw/I7gJWuHNUDAuj5Yc=</SignatureValue>
+   </Signature>
+   <system>
+      <define>
+         <registers>
+            <parm name="ibse-port" type="integer">9000</parm>
+         </registers>
+         <agent>
+            <name value="com.ibi.agents.XDCopyAgent" comment="Returns input document to output destination">COPY</name>
+         </agent>
+      </define>
+      <settings>
+         <backups>5</backups>
+         <datadebugsize>4</datadebugsize>
+         <deadletter>deadletter</deadletter>
+         <ixtehome>./</ixtehome>
+         <log>true</log>
+         <logroot>log</logroot>
+         <info>true</info>
+         <error>true</error>
+         <warn>true</warn>
+         <wsafroot>sreg(iwayhome)/lib</wsafroot>
+         <wsdlroot>wsdl</wsdlroot>
+         <wsdriver>hsqldb</wsdriver>
+         <wsconn>jdbc:hsqldb:file:./ibsp</wsconn>
+         <wsdrivername>org.hsqldb.jdbcDriver</wsdrivername>
+         <wsuser>sa</wsuser>
+         <wspassword/>
+         <wsjdbcpool>false</wsjdbcpool>
+         <wspolicy>false</wspolicy>
+         <maxlogsize>512</maxlogsize>
+         <numlogstokeep>10</numlogstokeep>
+         <retryinterval>120</retryinterval>
+         <killinterval>60</killinterval>
+         <ucxpath>true</ucxpath>
+         <wsnsaware>true</wsnsaware>
+      </settings>
+      <properties>
+         <IBSP>
+            <prop name="DataStoreType">embedded</prop>
+            <prop name="DataProviderName">none</prop>
+         </IBSP>
+         <JDBC/>
+      </properties>
+   </system>
+   <listener protocol="soap">SOAP1
+      <securityalgorithm>SunX509</securityalgorithm>
+      <encoding>UTF-8</encoding>
+      <precedence>1</precedence>
+      <active>true</active>
+      <count>3</count>
+      <linger>0</linger>
+      <srchar>%</srchar>
+      <keystoretype>JKS</keystoretype>
+      <timeout>2</timeout>
+      <port>SREG(ibse-port)</port>
+      <optimize>performance</optimize>
+      <securityprotocol>TLS</securityprotocol>
+      <flat>false</flat>
+      <autoReply>false</autoReply>
+      <truststoretype>JKS</truststoretype>
+      <needclientauth>false</needclientauth>
+      <localtrans>false</localtrans>
+      <securityprovider>com.sun.net.ssl.internal.ssl.Provider</securityprovider>
+      <file>cache</file>
+      <errpremit>false</errpremit>
+      <maxcount>10</maxcount>
+	  <loglevel>warn</loglevel>
+   </listener>
+</edaxml>

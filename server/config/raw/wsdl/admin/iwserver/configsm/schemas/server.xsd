@@ -1,0 +1,1524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Artem Portnoy (Information Builders) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:repo="http://consolesm.ibi.com/xml/repository" xmlns:reg="http://configsm.ibi.com/xml/registry" xmlns:srv="http://configsm.ibi.com/xml/server" targetNamespace="http://configsm.ibi.com/xml/server" elementFormDefault="qualified">
+	<import namespace="http://consolesm.ibi.com/xml/repository" schemaLocation="repository.xsd"/>
+	<import namespace="http://configsm.ibi.com/xml/registry" schemaLocation="registry.xsd"/>
+	<simpleType name="parameterType">
+		<restriction base="string">
+			<enumeration value="boolean"/>
+			<enumeration value="decimal"/>
+			<enumeration value="duration"/>
+			<enumeration value="integer"/>
+			<enumeration value="password"/>
+			<enumeration value="string"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="parameterControlEnum">
+		<restriction base="string">
+			<enumeration value="textarea"/>
+			<enumeration value="password"/>
+			<enumeration value="filePicker"/>
+			<enumeration value="directoryPicker"/>
+			<enumeration value="fileOrDirectoryPicker"/>
+			<enumeration value="checkbox"/>
+			<enumeration value="radio"/>
+			<enumeration value="subflow"/>
+			<enumeration value="transform"/>
+			<enumeration value="xslt"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="configType">
+		<restriction base="string">
+			<enumeration value="mongoconfig"/>
+			<enumeration value="ftpconfig"/>
+			<enumeration value="sftpconfig"/>
+			<enumeration value="restconfig"/>
+			<enumeration value="emailconfig"/>
+			<enumeration value="webfocusconfig"/>
+			<enumeration value="reportcasterconfig"/>
+			<enumeration value="salesforceconfig"/>
+			<enumeration value="sapconfig"/>
+			<enumeration value="rdbmsconfig"/>
+			<enumeration value="iwayconfig"/>
+			<enumeration value="dotnetconfig"/>
+			<enumeration value="iwaytransformconfig"/>
+			<enumeration value="xsltconfig"/>
+			<enumeration value="wfapp8config"/>
+			<enumeration value="basicauthconfig"/>
+			<enumeration value="oauthconfig"/>
+			<enumeration value="ntlmconfig"/>
+			<enumeration value="javaconfig"/>
+			<enumeration value="siebelconfig"/>
+			<enumeration value="psconfig"/>
+			<enumeration value="oracleconfig"/>
+			<enumeration value="jdeconfig"/>
+			<enumeration value="jdeworldconfig"/>
+			<enumeration value="twilioconfig"/>
+			<enumeration value="mscrmconfig"/>
+			<enumeration value="msexchangeconfig"/>
+			<enumeration value="queueinconfig"/>
+			<enumeration value="queueoutconfig"/>
+			<enumeration value="etlconfig"/>
+			<enumeration value="dqconfig"/>
+			<enumeration value="jdbcconfig"/>
+			<enumeration value="debugconfig"/>
+			<enumeration value="soapconfig"/>
+			<enumeration value="tcpconfig"/>
+			<enumeration value="blockconfig"/>
+            <enumeration value="chaincodeconfig"/>		
+            <enumeration value="twitterconfig"/>		
+            <enumeration value="dynamodbconfig"/>	
+            <enumeration value="iotconfig"/>
+            <enumeration value="redisconfig"/>	
+			<enumeration value="hbaseconfig"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="sectionType">
+		<restriction base="string">
+			<enumeration value="General"/>
+			<enumeration value="SQLStatement"/>
+			<enumeration value="SQLBuilder"/>
+			<enumeration value="ScriptProperties"/>
+			<enumeration value="ServiceType"/>
+			<enumeration value="Type"/>
+			<enumeration value="QueueType"/>
+			<enumeration value="SQLBatchStatement" />
+			<enumeration value="SQLBatchInsert" />
+			<enumeration value="DescriptorProperties"/>
+			<enumeration value="TransformProperty"/>
+			<enumeration value="PflowProperty"/>
+			<enumeration value="sqlProperty"/>
+			<enumeration value="SetEvent"/>
+			<enumeration value="SynchExpression"/>
+			<enumeration value="Timeout"/>
+			<enumeration value="SwitchExpression"/>
+			<enumeration value="SwitchCases"/>
+			<enumeration value="TestOperands"/>
+			<enumeration value="TestOccurrences"/>
+			<enumeration value="StartSchema"/>
+			<enumeration value="EndSchema"/>
+			<enumeration value="WSDLLocation"/>
+			<enumeration value="WSDLService"/>
+			<enumeration value="WSDLEndpoint"/>
+			<enumeration value="WSDLHeader"/>
+			<enumeration value="WSDLBody"/>
+			<enumeration value="WSDLResponse"/>
+			<enumeration value="WSDLFault"/>
+			<enumeration value="WSDLProxy"/>
+			<enumeration value="WSDLStripEnvelope"/>
+			<enumeration value="KeystoreTruststore"/>
+			<enumeration value="BIObjectConnect"/>
+			<enumeration value="BIObjectLogin"/>
+			<enumeration value="BIObjectReport"/>
+			<enumeration value="BIObjectPropertiesBasicSelection"/>
+			<enumeration value="BIObjectProperties"/>
+			<enumeration value="WebFOCUSConfigurationPage"/>
+			<enumeration value="WebFOCUSObjectProperties"/>
+			<enumeration value="WebFOCUSObjectReport"/>
+			<enumeration value="ETLObjectLogin"/>
+			<enumeration value="ETLObjectFlow"/>
+			<enumeration value="ETLObjectProperties"/>
+			<enumeration value="ETLObjectOptionsSelection" />
+			<enumeration value="ETLObjectParametersStoreProceduresContentSelection"/>
+			<enumeration value="ETLObjectReturnCodesSelection"/>
+			<enumeration value="ReportCasterConnection"/>
+			<enumeration value="ReportCasterReports"/>
+			<enumeration value="Debug"/>
+			<enumeration value="RelationProperties"/>
+			<enumeration value="UserDefinedProperties"/>
+			<enumeration value="VariablesSection"/>
+			<enumeration value="Info"/>
+			<enumeration value="ObjectTraceProperty"/>
+			<enumeration value="FlowTraceProperty"/>
+			<enumeration value="EmitterType"/>
+			<enumeration value="RestAPI"/>
+			<enumeration value="PreExecution"/>
+			<enumeration value="PostExecution"/>
+			<enumeration value="ConfigurationAdapter"/>
+			<enumeration value="DescriptorAdapter"/>
+			<enumeration value="DescriptorService"/>
+			<enumeration value="Payload"/>
+			<enumeration value="EndConfiguration"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="genericType">
+		<restriction base="string">
+		    <enumeration value="awsconnector"/>
+			<enumeration value="connector"/>
+			<enumeration value="adapter"/>
+			<enumeration value="techadapter"/>
+			<enumeration value="bi"/>
+			<enumeration value="dataquality"/>
+			<enumeration value="component"/>
+			<enumeration value="authentication"/>
+			<enumeration value="trace"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="skillType">
+		<restriction base="string">
+			<enumeration value="basic"/>
+			<enumeration value="advanced"/>
+			<enumeration value="expert"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="objectClassType">
+	    <restriction base="string">
+			<enumeration value="agent"/>
+			<enumeration value="start"/>
+		    <enumeration value="end"/>		
+			<enumeration value="stop"/>
+			<enumeration value="decision"/>
+			<enumeration value="join"/>
+			<enumeration value="junction"/>
+			<enumeration value="set"/>
+			<enumeration value="synch"/>
+		</restriction>		
+	</simpleType>
+	<simpleType name="lineStyleType">
+		<restriction base="string">
+			<enumeration value="dash"/>
+			<enumeration value="dashdot"/>
+			<enumeration value="dashdotdot"/>
+			<enumeration value="dot"/>	
+            <enumeration value="solid"/>		
+            <enumeration value="unspecified"/>		
+		</restriction>
+	</simpleType>	
+	<simpleType name="lineStyleWeight">
+		<restriction base="string">
+			<enumeration value="heavy"/>
+			<enumeration value="standard"/>
+			<enumeration value="fine"/>	
+		</restriction>
+	</simpleType>		
+    <simpleType name="portType">
+		<restriction base="string">
+			<enumeration value="input"/>
+			<enumeration value="loop"/>			
+			<enumeration value="output"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="portConfigurationType">
+		<restriction base="string">
+			<enumeration value="single"/>
+			<enumeration value="multi"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="documentFormatType">
+		<restriction base="string">
+			<enumeration value="bytes"/>
+			<enumeration value="lines"/>
+			<enumeration value="json"/>
+			<enumeration value="xml"/>
+		</restriction>
+	</simpleType>
+	<complexType name="Parameter">
+		<sequence>
+			<element name="EnumSet" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="EnumSetValue" maxOccurs="unbounded">
+							<complexType>
+								<attribute name="value" type="string" use="required"/>
+								<attribute name="label" type="string" use="optional"/>
+								<attribute name="description" type="string" use="optional"/>
+							</complexType>
+						</element>
+						<element name="ProviderNameEnum" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<attribute name="providerClassName" type="string" use="required"/>
+							</complexType>
+						</element>
+						<element name="ConfigTypeEnum" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<attribute name="type" type="srv:configType" use="required"/>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="displayName" type="string" use="optional"/>
+		<attribute name="value" type="string" use="optional"/>
+		<attribute name="type" type="srv:parameterType" use="optional"/>
+		<attribute name="control" type="srv:parameterControlEnum" use="optional"/>
+		<attribute name="required" type="boolean" use="optional" default="false"/>
+		<attribute name="description" type="string" use="optional"/>
+		<attribute name="skill" type="srv:skillType" use="optional" default="basic"/>
+		<attribute name="hidden" type="boolean" use="optional"/>
+	    <attribute name="internal" type="boolean" use="optional"/>
+		<attribute name="namespace" type="string" use="optional"/>
+	</complexType>
+	<complexType name="Event">
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="label" type="string" use="optional"/>
+		<attribute name="description" type="string" use="optional"/>
+		<attribute name="custom" type="boolean" use="optional" default="false"/>
+	</complexType>
+	<complexType name="ComponentDescriptor">
+		<sequence>
+			<element name="ParameterGroup" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="Parameter" type="srv:Parameter" maxOccurs="unbounded"/>
+					</sequence>
+					<attribute name="name" type="string" use="optional"/>
+					<attribute name="description" type="string" use="optional"/>
+					<attribute name="hidden" type="boolean" use="optional"/>
+				</complexType>
+			</element>
+			<element name="RegistersGroup" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="Parameter" type="srv:Parameter" maxOccurs="unbounded"/>
+					</sequence>
+					<attribute name="name" type="string" use="optional"/>
+					<attribute name="description" type="string" use="optional"/>
+					<attribute name="hidden" type="boolean" use="optional"/>
+				</complexType>
+			</element>			
+
+			<element name="Event" type="srv:Event" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="className" type="string" use="optional"/>
+		<attribute name="config" type="srv:configType" use="optional"/>
+		<attribute name="configId" type="string" use="optional"/>
+    	<attribute name="description" type="string" use="optional"/>
+		<attribute name="supportsUserParams" type="boolean" use="optional" default="false"/>
+		<attribute name="categories" type="string" use="optional"/>
+		<attribute name="tags" type="string" use="optional"/>
+		<attribute name="iterator" type="boolean" use="optional" default="false"/>
+		<attribute name="id" type="string" use="optional"/>
+		<attribute name="visibility" use="optional" default="visible">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="visible"/>
+					<enumeration value="invisible"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="supportsUserEdges" type="string" use="optional"/>
+	</complexType>
+	<complexType name="Section">
+		<!--
+		<sequence>
+			<element name="EnumSet" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="SectionTypeEnum" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<attribute name="type" type="srv:sectionType" use="required"/>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+		-->
+		<attribute name="type" type="srv:sectionType" use="required"/>
+		<attribute name="index" type="int" use="required"/>
+		<attribute name="selected" type="boolean" use="optional" default="false"/>
+	</complexType>
+	<complexType name="PortElementType">
+	      <!--   <element name="Rules" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="Rule" type="srv:PortRules" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		   -->
+		<attribute name="type" type="srv:portType" use="required"/>
+		<attribute name="style" type="srv:lineStyleType" use="optional" default="solid"/>
+		<attribute name="weight" type="srv:lineStyleWeight" use="optional" default="standard"/>
+		
+        <attribute name="configuration" type="srv:portConfigurationType" use="required"/>
+		<attribute name="min" type="int" use="optional"/>
+		<attribute name="max" type="int" use="optional"/>
+	</complexType>
+	<complexType name="GenericsDescriptorType">
+		<sequence>
+			<element name="ParameterGroup" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="Parameter" type="srv:Parameter" maxOccurs="unbounded"/>
+					</sequence>
+					<attribute name="name" type="string" use="optional"/>
+					<attribute name="description" type="string" use="optional"/>
+					<attribute name="hidden" type="boolean" use="optional"/>
+				</complexType>
+			</element>
+		</sequence>
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="type" type="srv:genericType" use="required"/>
+		<attribute name="config" type="srv:configType" use="optional"/>
+		<attribute name="id" type="string" use="optional"/>
+		<attribute name="description" type="string" use="optional"/>
+		<attribute name="visibility" use="optional" default="visible">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="visible"/>
+					<enumeration value="invisible"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<element name="PFlowCompsDescriptor">
+		<complexType>
+			<sequence>
+				<element name="PFlowObject" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<complexContent>
+							<extension base="srv:ComponentDescriptor"/>
+						</complexContent>
+					</complexType>
+				</element>
+				<element name="StartLoopConnectionBlackList" minOccurs="1" maxOccurs="1">
+					<complexType>
+						<sequence>
+							<element name="objectType" maxOccurs="unbounded" type="string"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="AcceptLoopConnectionWhiteList" minOccurs="1" maxOccurs="1">
+					<complexType>
+						<sequence>
+							<element name="objectType" maxOccurs="unbounded" type="string"/>
+						</sequence>
+					</complexType>
+				</element>					
+				<element name="PFlowObjectCategory" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element ref="srv:ObjectType" maxOccurs="unbounded"/>
+							<element ref="srv:SectionsGroup" maxOccurs="1"/>
+							<element ref="srv:Ports" maxOccurs="1"/>
+	                        <element name="Event" type="srv:Event" minOccurs="0" maxOccurs="unbounded"/>							
+						</sequence>
+						<attribute name="name" type="string" use="required"/>
+						<attribute name="label" type="string" use="required"/>
+						<attribute name="objectclass" type="srv:objectClassType" use="required"/>
+						<attribute name="hidden" type="string" use="optional"/>
+						<attribute name="subcategory" type="string" use="optional"/>
+					</complexType>
+				</element>
+				<element name="PFlowObjectGroup" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element ref="srv:ObjectType" maxOccurs="unbounded"/>
+						</sequence>
+						<attribute name="name" type="string" use="required"/>
+						<attribute name="label" type="string" use="optional"/>
+					</complexType>
+				</element>
+				<element name="PFlowPalette" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element ref="srv:PaletteComponentGroup" maxOccurs="unbounded"/>
+						</sequence>
+						<attribute name="name" type="string" use="required"/>
+						<attribute name="label" type="string" use="optional"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GenericsDescriptor">
+		<complexType>
+			<sequence>
+				<element name="GenericsObject" type="srv:GenericsDescriptorType" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetComponentDescriptorsReq">
+		<annotation>
+			<documentation>Use this method to retrieve parameter metadata for
+				all the components that can be defined on the server.
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetComponentDescriptorsRes">
+		<annotation>
+			<documentation>Use this method to retrieve parameter metadata for
+				all the components that can be defined on the server.
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="Decryptor" type="srv:ComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="Emitter" type="srv:ComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="Encryptor" type="srv:ComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="Listener" type="srv:ComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="Preemitter" type="srv:ComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="Preparser" type="srv:ComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="Reviewer" type="srv:ComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="Service" type="srv:ComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="srv:PFlowCompsDescriptor"/>
+				<element ref="srv:GenericsDescriptor"/>
+			</sequence>
+			<attribute name="release" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetGeneralPropertiesReq">
+		<annotation>
+			<documentation>Use this method to retrieve general properties of
+				the server</documentation>
+		</annotation>
+		<complexType/>
+	</element>
+	<element name="GetGeneralPropertiesRes">
+		<annotation>
+			<documentation>Use this method to retrieve general properties of
+				the server</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="General">
+					<complexType>
+						<sequence>
+							<element name="UserName" type="string"/>
+							<element name="IWayHome" type="string"/>
+							<element name="ServerVersion" type="string"/>
+							<element name="ServerRelease" type="string"/>
+							<element name="BuildInfo" type="string"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="Config">
+					<complexType>
+						<sequence>
+							<element name="ConfigName" type="string"/>
+							<element name="UserDir" type="string"/>
+							<element name="ServerStartupTime" type="long"/>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="Environment">
+					<complexType>
+						<sequence>
+							<element name="OSName" type="string"/>
+							<element name="OSArch" type="string"/>
+							<element name="JVMVendor" type="string"/>
+							<element name="JVMVersion" type="string"/>
+							<element name="JVMName" type="string"/>
+							<element name="MaxMemory" type="double"/>
+							<element name="FreeMemory" type="double"/>
+							<element name="Classpath">
+								<complexType>
+									<sequence>
+										<element name="Path" type="string" maxOccurs="unbounded"/>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="Locale">
+					<complexType>
+						<sequence>
+							<element name="Lang" type="string"/>
+							<element name="Timezone" type="string"/>
+							<element name="TimezoneOffset" type="int"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CompileProcessFlowReq">
+		<annotation>
+			<documentation>Use this method to get a runtime representation of
+				a pflow</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="GUIFlow" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="CompileProcessFlowRes">
+		<annotation>
+			<documentation>Use this method to get a runtime representation of
+				a pflow</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="CompiledFlow" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<simpleType name="objectDebugLevel">
+		<restriction base="string">
+			<enumeration value="full"/>
+			<enumeration value="no"/>
+			<enumeration value="select"/>
+		</restriction>
+	</simpleType>
+	<element name="TestProcessFlowReq">
+		<annotation>
+			<documentation>This method is not recommended due to problem with using base64Binary in XMLBeans. Use TestProcessFlowReqV2 instead</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="GUIFlow" type="string"/>
+				<element name="InputDocument">
+					<complexType>
+						<simpleContent>
+							<extension base="base64Binary">
+								<attribute name="xml" type="boolean" use="required"/>
+								<attribute name="format" type="srv:documentFormatType"/>
+							</extension>
+						</simpleContent>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="objectDebugLevel" type="srv:objectDebugLevel" default="full"/>
+			<attribute name="debug" type="boolean" default="false"/>
+			<attribute name="deepDebug" type="boolean" default="false"/>
+			<attribute name="commitTransaction" type="boolean" default="false"/>
+		</complexType>
+	</element>
+	<simpleType name="traceLevel">
+		<restriction base="string">
+			<enumeration value="info"/>
+			<enumeration value="error"/>
+			<enumeration value="debug"/>
+			<enumeration value="deep"/>
+		</restriction>
+	</simpleType>
+	<element name="TestProcessFlowRes">
+		<annotation>
+			<documentation>This method is not recommended due to problem with using base64Binary in XMLBeans. Use TestProcessFlowResV2 instead</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="Traces">
+					<complexType>
+						<sequence>
+							<element name="Trace" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<simpleContent>
+										<extension base="string">
+											<attribute name="level" type="srv:traceLevel" use="required"/>
+										</extension>
+									</simpleContent>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="Output">
+					<complexType>
+						<sequence>
+							<element name="Document" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<simpleContent>
+										<extension base="base64Binary">
+											<attribute name="termNodeName" type="string" use="required"/>
+											<attribute name="documentSeq" type="int" use="required"/>
+											<attribute name="suffix" type="string" use="required"/>
+										</extension>
+									</simpleContent>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="executionTime" type="long" use="required"/>
+			<attribute name="returnState" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="TestProcessFlowV2Req">
+		<annotation>
+			<documentation>Use this method to do a test run of the pflow</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="GUIFlow" type="string"/>
+				<element name="InputDocument">
+					<complexType>
+						<simpleContent>
+							<extension base="string">
+								<attribute name="xml" type="boolean" use="required"/>
+								<attribute name="format" type="srv:documentFormatType"/>
+								<attribute name="encoding" type="string" use="optional"/>
+							</extension>
+						</simpleContent>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="objectDebugLevel" type="srv:objectDebugLevel" default="full"/>
+			<attribute name="debug" type="boolean" default="false"/>
+			<attribute name="deepDebug" type="boolean" default="false"/>
+			<attribute name="commitTransaction" type="boolean" default="false"/>
+			<attribute name="configBase" type="string" use="optional"/>
+		</complexType>
+	</element>
+	<element name="TestProcessFlowV2Res">
+		<annotation>
+			<documentation>Use this method to do a test run of the pflow</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="Traces">
+					<complexType>
+						<sequence>
+							<element name="Trace" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<simpleContent>
+										<extension base="string">
+											<attribute name="level" type="srv:traceLevel" use="required"/>
+										</extension>
+									</simpleContent>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+				<element name="Output">
+					<complexType>
+						<sequence>
+							<element name="Document" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<simpleContent>
+										<extension base="string">
+											<attribute name="termNodeName" type="string" use="required"/>
+											<attribute name="documentSeq" type="int" use="required"/>
+											<attribute name="suffix" type="string" use="required"/>
+										</extension>
+									</simpleContent>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="executionTime" type="long" use="required"/>
+			<attribute name="returnState" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="SectionsGroup">
+				<complexType>
+					<sequence>
+						<element name="Section" type="srv:Section" maxOccurs="unbounded"/>
+					</sequence>
+					<attribute name="name" type="string" use="optional"/>
+					<attribute name="description" type="string" use="optional"/>
+					<attribute name="hidden" type="boolean" use="optional"/>
+				</complexType>
+	</element>
+	<element name="Ports">
+				<complexType>
+					<sequence>
+						<element name="Port" type="srv:PortElementType" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+	</element>	
+	<element name="ObjectType">
+		<complexType>
+			<attribute name="className" type="string" use="required"/>
+			<attribute name="label" type="string" use="optional"/>
+			<attribute name="id" type="string" use="optional"/>
+		</complexType>
+	</element>
+	<element name="PaletteComponent">
+		<complexType>
+			<attribute name="name" type="string" use="required"/>
+			<attribute name="label" type="string" use="required"/>
+			<attribute name="id" type="string" use="required"/>
+		    <attribute name="icon" type="string" use="optional"/>
+			<attribute name="description" type="string" use="optional"/>
+		</complexType>
+	</element>
+	<element name="PaletteComponentGroup">
+		<complexType>
+			<sequence>
+				<element ref="srv:PaletteComponent" maxOccurs="unbounded"/>
+			</sequence>
+			<attribute name="name" type="string" use="required"/>
+			<attribute name="id" type="string" use="required"/>
+			<attribute name="label" type="string" use="required"/>
+			<attribute name="description" type="string" use="optional"/>
+		</complexType>
+	</element>
+	<!-- transform deployment definitions -->
+	<element name="DeployTransformReq">
+		<annotation>
+			<documentation>Use this method to deploy a new transform
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rTransform"/>
+				<element name="TransformFile" type="reg:ComponentFile" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeployTransformRes">
+		<annotation>
+			<documentation>Use this method to deploy a new transform
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rTransform"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!-- is resource exists -->
+	<element name="IsResourceExistsReq">
+		<annotation>
+			<documentation>Use this method to check if particular resource
+				exists</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="name" type="string"/>
+				<element name="type" type="repo:componentTypeEnum"/>
+				<element name="configuration" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="IsResourceExistsRes" type="boolean">
+		<annotation>
+			<documentation>Returns true or false depending on whether
+				resource exists</documentation>
+		</annotation>
+	</element>
+	<!-- Features -->
+	<complexType name="Features">
+		<sequence>
+			<element name="Feature" type="srv:Feature" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="version" type="string" use="required"/>
+		<attribute name="date" type="dateTime" use="required"/>
+	</complexType>
+	<!-- Feature -->
+	<complexType name="Feature">
+		<sequence>
+			<element name="Resources">
+				<complexType>
+					<sequence>
+						<element name="Resource" maxOccurs="unbounded">
+							<complexType>
+								<simpleContent>
+									<extension base="string">
+										<attribute name="type" type="string" use="required"/>
+										<attribute name="required" type="boolean" use="required"/>
+										<attribute name="location" type="string" use="required"/>
+										<attribute name="feature" type="string" use="required"/>
+										<attribute name="json" type="string" use="optional"/>
+										<attribute name="condition" type="string" use="optional"/>
+									</extension>
+								</simpleContent>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="displayname" type="string" use="required"/>
+		<attribute name="description" type="string" use="required"/>
+	</complexType>
+	<!--  get features -->
+	<element name="GetFeaturesReq">
+		<annotation>
+			<documentation>Use this method to request server's features
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="userName" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetFeaturesRes">
+		<annotation>
+			<documentation>Use this method to get server's features
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="Features" type="srv:Features"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!-- Configurations -->
+	<complexType name="Configurations">
+		<sequence>
+			<element name="Configuration" type="srv:Configuration" maxOccurs="unbounded"/>
+		</sequence>
+		<attribute name="master" type="string" use="required"/>
+		<attribute name="starttime" type="string" use="optional"/>
+	</complexType>
+	<!-- Configuration -->
+	<complexType name="Configuration">
+		<attribute name="port" type="int" use="required"/>
+		<attribute name="name" type="string" use="required"/>
+		<attribute name="current_version" type="decimal" use="required"/>
+		<attribute name="description" type="string" use="optional"/>
+		<attribute name="status" type="string" use="optional"/>
+		<attribute name="type" use="optional">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="template"/>
+					<enumeration value="application"/>
+					<enumeration value="test"/>
+					<enumeration value="admin"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+	</complexType>
+	<!--  get configurations -->
+	<element name="GetConfigurationsReq">
+		<annotation>
+			<documentation>Use this method to request server's configurations
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="userName" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetConfigurationsRes">
+		<annotation>
+			<documentation>Use this method to get server's configurations
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="Configurations" type="srv:Configurations"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!-- get configuration contents -->
+	<element name="GetConfigurationContentsReq">
+		<annotation>
+			<documentation>Use this method to get contents of configuration</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="configuration" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetConfigurationContentsRes" type="boolean">
+		<annotation>
+			<documentation>Returns contents of configuration</documentation>
+		</annotation>
+	</element>
+	<!--  get APIs -->
+	<element name="GetAPIsReq">
+		<annotation>
+			<documentation>Use this method to request server's APIs
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="userName" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetAPIsRes">
+		<annotation>
+			<documentation>Use this method to get server's APIs
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="API" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<attribute name="applicationName" type="string" use="required"/>
+						<attribute name="apiName" type="string" use="required"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetAPIDefinitionReq">
+		<annotation>
+			<documentation>Use this method to request server's API definition
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="applicationName" type="string" use="required"/>
+			<attribute name="apiName" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetAPIDefinitionRes">
+		<annotation>
+			<documentation>Use this method to get server's API definition
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="APIDefinition" type="string" minOccurs="0" maxOccurs="1"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeployProcessReq">
+		<annotation>
+			<documentation>Use this method to deploy process</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rProcess"/>
+				<element name="GuiFlow" type="reg:ComponentFile" minOccurs="0"/>
+				<element name="CompiledFlow" type="reg:ComponentFile" minOccurs="0"/>
+				<element name="FlowImage" type="reg:ComponentFile" minOccurs="0"/>
+				<element name="DeployLocation" maxOccurs="unbounded">
+					<complexType>
+						<attribute name="path" type="string" use="required"/>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="configurationName" type="string" use="required"/>
+			<attribute name="overwrite" type="boolean" default="false"/>
+			<attribute name="refresh" type="boolean" default="false"/>
+		</complexType>
+	</element>
+	<element name="DeployProcessRes">
+		<annotation>
+			<documentation>Use this method to deploy process</documentation>
+		</annotation>
+		<complexType/>
+	</element>
+	<element name="GetProcessDeployLocationsReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="configurationName" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetProcessDeployLocationsRes">
+		<complexType>
+			<sequence>
+				<element ref="srv:ProcessDeployLocation" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ProcessDeployLocation">
+		<complexType>
+			<sequence>
+				<element ref="srv:ProcessDeployLocation" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="DeployedProcess" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<attribute name="name" type="string" use="required"/>
+						<attribute name="description" type="string" use="optional"/>
+					</complexType>
+				</element>
+			</sequence>
+			<attribute name="name" type="string" use="required"/>
+			<attribute name="description" type="string" use="optional"/>
+			<attribute name="deployable" type="boolean" default="false"/>
+		</complexType>
+	</element>
+	<!-- transform test run -->
+	<element name="TestTransformReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="configId" type="string"/>
+				<element name="guid" type="string"/>
+				<element name="transformFileName" type="string"/>
+				<element name="inputDocument">
+					<complexType>
+						<attribute name="xml" type="boolean"/>
+						<attribute name="format" type="srv:documentFormatType"/>
+						<attribute name="content" type="string"/>
+						<attribute name="encoding" type="string" use="optional"/>
+					</complexType>
+				</element>
+				<element name="guiFlow" type="string"/>
+				<element name="file" maxOccurs="unbounded">
+					<complexType>
+						<attribute name="name" type="string"/>
+						<attribute name="encoding" type="string"/>
+						<attribute name="content" type="string"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="TestTransformRes">
+		<complexType>
+			<sequence>
+				<element name="output" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<!--app deploy-->
+	<element name="DeployAppReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+			</sequence>
+			<attribute name="archiveName" type="string" use="required"/>
+			<attribute name="archiveVersion" type="string" use="optional"/>
+			<attribute name="templateName" type="string" use="optional"/>
+			<attribute name="appName" type="string" use="optional"/>
+			<attribute name="consolePort" type="string" use="optional"/>
+			<attribute name="description" type="string" use="optional"/>
+		</complexType>
+	</element>
+	<element name="DeployAppDirectReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+				<element name="ApplicationArchiveFile" type="reg:Base64BinaryComponentFile"/>
+				<element name="TemplateArchiveFile" type="reg:Base64BinaryComponentFile" minOccurs="0"/>
+			</sequence>
+			<attribute name="templateName" type="string" use="optional"/>
+			<attribute name="appName" type="string" use="optional"/>
+			<attribute name="consolePort" type="string" use="optional"/>
+			<attribute name="deployAsTestServer" type="boolean" use="optional"/>
+			<attribute name="description" type="string" use="optional"/>
+		</complexType>
+	</element>
+	<element name="ReDeployAppReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+			</sequence>
+			<attribute name="appName" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="StartAppReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+			</sequence>
+			<attribute name="appName" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="StopAppReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+			</sequence>
+			<attribute name="appName" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="StartChannelReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+			</sequence>
+			<attribute name="configurationName" type="string" use="required"/>
+			<attribute name="channelName" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="StopChannelReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+			</sequence>
+			<attribute name="configurationName" type="string" use="required"/>
+			<attribute name="channelName" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetStatusReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+			</sequence>
+			<attribute name="configurationName" type="string" use="required"/>
+			<attribute name="channelName" type="string" use="optional"/>
+		</complexType>
+	</element>
+	<element name="GetStatusRes">
+		<complexType>
+			<sequence>
+				<element name="Status">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="active"/>
+							<enumeration value="stopping"/>
+							<enumeration value="stopped"/>
+							<enumeration value="retrying"/>
+							<enumeration value="error"/>
+						</restriction>
+					</simpleType>
+				</element>
+				<element name="Message" type="string" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="DeleteAppReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication"/>
+			</sequence>
+			<attribute name="appName" type="string" use="required"/>
+			<attribute name="type" type="string" use="optional"/>
+		</complexType>
+	</element>
+	<element name="ImportTemplateReq">
+		<annotation>
+			<documentation>Use this method to import a template archive and install it as a template
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="TemplateFile" type="reg:ComponentFile" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ImportTemplateV2Req">
+		<annotation>
+			<documentation>Use this method to import a template archive and install it as a template
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="TemplateFile" type="reg:Base64BinaryComponentFile"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RunScriptReq">
+		<annotation>
+			<documentation>Use this method to execute a server-side script
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="Script">
+					<complexType>
+						<sequence>
+							<element name="ServerName" type="string"/>
+							<element name="ScriptName" type="string"/>
+							<element name="TargetName" type="string"/>
+							<element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<attribute name="name" type="string" use="required"/>
+									<attribute name="value" type="string" use="required"/>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="RunScriptRes">
+		<complexType>
+			<attribute name="executionId" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetScriptStatusReq">
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="ExecutionId" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetScriptStatusRes">
+		<complexType>
+			<sequence>
+				<element ref="srv:ScriptStatus"/>
+				<element name="Trace" type="string" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ScriptStatus">
+		<complexType>
+			<sequence>
+				<element name="Status">
+					<simpleType>
+						<restriction base="string">
+							<enumeration value="in process"/>
+							<enumeration value="success"/>
+							<enumeration value="fail"/>
+						</restriction>
+					</simpleType>
+				</element>
+				<element name="Script" type="string"/>
+				<element name="User" type="string"/>
+				<element name="ExecutionDateTime" type="dateTime"/>
+				<element name="ExecutionLengthMilliseconds" type="long" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<complexType name="IFLComponentDescriptor">
+		<sequence>
+			<element name="Desc">
+				<complexType>
+					<simpleContent>
+						<extension base="string">
+							<attribute name="iscdata" type="boolean"/>
+						</extension>
+					</simpleContent>
+				</complexType>
+			</element>
+		</sequence>
+		<attribute name="name" type="string"/>
+		<attribute name="class" type="string"/>
+		<attribute name="is60" type="boolean"/>
+		<attribute name="namewithparms" type="string"/>
+	</complexType>
+	<element name="GetIFLComponentDescriptorsRes">
+		<annotation>
+			<documentation>Use this method to retrieve parameter metadata for all the IFL that can be defined on the server.
+			</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="IFLComponent" type="srv:IFLComponentDescriptor" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+			<attribute name="release" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetIFLComponentDescriptorsReq">
+		<annotation>
+			<documentation>Use this method to retrieve parameter metadata for all the IFL that can be defined on the server. </documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetApplicationLogRes">
+		<annotation>
+			<documentation>Use this method to get log information for the application.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="Application" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="Log" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="message" minOccurs="0" maxOccurs="unbounded">
+											<complexType>
+												<simpleContent>
+													<extension base="string">
+														<attribute name="time" type="string" use="optional"/>
+														<attribute name="source" type="string" use="optional"/>
+														<attribute name="type" type="string" use="optional"/>
+													</extension>
+												</simpleContent>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+							<element name="LogFiles" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="LogFile" minOccurs="0" maxOccurs="unbounded">
+											<complexType>
+												<attribute name="File" type="string" use="optional"/>
+												<attribute name="DateFrom" type="string" use="optional"/>
+												<attribute name="DateTo" type="string" use="optional"/>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="name" type="string" use="optional"/>
+						<attribute name="description" type="string" use="optional"/>
+						<attribute name="endtime" type="string" use="optional"/>
+						<attribute name="currentlogfile" type="string" use="optional"/>
+						<attribute name="exestatus">
+							<simpleType>
+								<restriction base="string">
+									<enumeration value="ok"/>
+									<enumeration value="error"/>
+								</restriction>
+							</simpleType>
+						</attribute>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetApplicationLogReq">
+		<annotation>
+			<documentation>Use this method to get log information for the application.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="Application" minOccurs="0">
+					<complexType>
+						<attribute name="name" type="string" use="required"/>
+						<attribute name="starttime" type="string" use="optional"/>
+						<attribute name="endtime" type="string" use="optional"/>
+						<attribute name="source" type="string" use="optional"/>
+						<attribute name="level" type="string" use="optional"/>
+						<attribute name="startlogfile" type="string" use="optional"/>
+						<attribute name="autorun" type="string" use="optional"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetApplicationPropertiesRes">
+		<annotation>
+			<documentation>Use this method to get the properties of the application.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="Application" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="Groups" minOccurs="0">
+								<complexType>
+									<sequence>
+										<element name="Group" minOccurs="0" maxOccurs="unbounded">
+											<complexType>
+												<sequence>
+													<element name="item" minOccurs="0" maxOccurs="unbounded">
+														<complexType>
+															<sequence>
+																<element name="subitems" minOccurs="0">
+																	<complexType>
+																		<sequence>
+																			<element name="subitem" minOccurs="0" maxOccurs="unbounded">
+																				<complexType>
+																					<attribute name="name" type="string" use="optional"/>
+																					<attribute name="value" type="string" use="optional"/>
+																					<attribute name="default" type="boolean" use="optional"/>
+																				</complexType>
+																			</element>
+																		</sequence>
+																	</complexType>
+																</element>
+															</sequence>
+															<attribute name="name" type="string" use="optional"/>
+															<attribute name="type" type="string" use="optional"/>
+															<attribute name="value" type="string" use="optional"/>
+														</complexType>
+													</element>
+												</sequence>
+												<attribute name="name" type="string" use="optional"/>
+											</complexType>
+										</element>
+									</sequence>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="name" type="string" use="optional"/>
+						<attribute name="exestatus">
+							<simpleType>
+								<restriction base="string">
+									<enumeration value="ok"/>
+									<enumeration value="error"/>
+								</restriction>
+							</simpleType>
+						</attribute>
+						<attribute name="description" type="string" use="optional"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetApplicationPropertiesReq">
+		<annotation>
+			<documentation>Use this method to get the properties of the application.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="Application" minOccurs="0">
+					<complexType>
+						<attribute name="name" type="string" use="required"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetListApplicationStatusRes">
+		<annotation>
+			<documentation>Use this method to retrieve status for the list of applications.</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="Applications" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="Application" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<attribute name="name" type="string" use="required"/>
+									<attribute name="status">
+										<simpleType>
+											<restriction base="string">
+												<enumeration value="active"/>
+												<enumeration value="stopping"/>
+												<enumeration value="stopped"/>
+												<enumeration value="retrying"/>
+												<enumeration value="error"/>
+											</restriction>
+										</simpleType>
+									</attribute>
+									<attribute name="exestatus">
+										<simpleType>
+											<restriction base="string">
+												<enumeration value="ok"/>
+												<enumeration value="error"/>
+											</restriction>
+										</simpleType>
+									</attribute>
+									<attribute name="description" type="string" use="optional"/>
+								</complexType>
+							</element>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetListApplicationStatusReq">
+		<annotation>
+			<documentation>Use this method to retrieve status for the application list. </documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="Applications" minOccurs="0">
+					<complexType>
+						<sequence>
+							<element name="Application" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<attribute name="name" type="string" use="required"/>
+								</complexType>
+							</element>
+						</sequence>
+						<attribute name="all" type="boolean" use="optional"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

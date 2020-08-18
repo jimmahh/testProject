@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<iWayBusinessService xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="iwserver" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<abstract>abstract</abstract>
+	<description>description</description>
+	<location>admin/iwserver.ibs</location>
+	<address>ISMServer</address>
+	<license>admin</license>
+	<operations>
+		<method name="GetComponentDescriptors" type="ADAPTER">
+			<abstract>Use this method to retrieve parameter metadata for all the components that can be defined on the server</abstract>
+			<description>Use this method to retrieve parameter metadata for all the components that can be defined on the server</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetGeneralProperties" type="ADAPTER">
+			<abstract>Use this method to retrieve general properties of the server</abstract>
+			<description>Use this method to retrieve general properties of the server</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="CompileProcessFlow" type="ADAPTER">
+			<abstract>Use this method to compile a gui representation of pflow into runtime representation</abstract>
+			<description>Use this method to compile a gui representation of pflow into runtime representation</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="TestProcessFlow" type="ADAPTER">
+			<abstract>The use of this method is not recommended as it has been deprecated. Use TestProcessFlowV2 instead</abstract>
+			<description>The use of this method is not recommended as it has been deprecated. Use TestProcessFlowV2 instead</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="TestProcessFlowV2" type="ADAPTER">
+			<abstract>Use this method to do a test run of the pflow</abstract>
+			<description>Use this method to do a test run of the pflow</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="DeployTransform" type="ADAPTER">
+			<abstract>Use this method to deploy transform</abstract>
+			<description>Use this method to do a test run of the pflow</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="DeployChannel" type="ADAPTER">
+			<abstract>Use this method to deploy channel</abstract>
+			<description>Use this method to deploy channel</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="DeployComponentFiles" type="ADAPTER">
+			<abstract>Use this method to deploy channel</abstract>
+			<description>Use this method to deploy channel</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="IsResourceExists" type="ADAPTER">
+			<abstract>Use this method to find out if resource exists in dictionary</abstract>
+			<description>Returns true if resource exists, false otherwise</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetConfigurations" type="ADAPTER">
+			<abstract>Use this method retrieves server configurations</abstract>
+			<description>Returns Configurations representing server's configurations </description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetAPIs" type="ADAPTER">
+			<abstract>Use this method retrieves server APIs</abstract>
+			<description>Returns server's APIs</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetAPIDefinition" type="ADAPTER">
+			<abstract>Use this method to retrieve server API definition</abstract>
+			<description>Returns server's API definition</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="GetFeatures" type="ADAPTER">
+			<abstract>This method retrieves server features</abstract>
+			<description>Returns  server's features </description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="getInstalledFeatures" type="ADAPTER">
+			<abstract>This method retrieves installed server features</abstract>
+			<description>Returns  installed server's features </description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="IsFeatureInstalled" type="ADAPTER">
+			<abstract>This method retrieves info if  server feature was installed</abstract>
+			<description>Returns an answer if feature already installed</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="TestTransform" type="ADAPTER">
+			<abstract>Use this method to test run a transform</abstract>
+			<description>Returns test run result </description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="DeployApp" type="ADAPTER">
+			<abstract>Use this method to deploy applications</abstract>
+			<description>Use this method to deploy applications</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+		<method name="DeployAppDirect" type="ADAPTER">
+			<abstract>Use this method to deploy applications</abstract>
+			<description>Use this method to deploy applications</description>
+			<input>
+				<paramlist/>
+				<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+					<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+				</xs:schema>
+			</input>
+		</method>
+    <method name="ReDeployApp" type="ADAPTER">
+       <abstract>Use this method to redeploy applications</abstract>
+       <description>Use this method to redeploy applications</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+    <method name="StartApp" type="ADAPTER">
+       <abstract>Use this method to start applications</abstract>
+       <description>Use this method to start applications</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+    <method name="StopApp" type="ADAPTER">
+       <abstract>Use this method to stop applications</abstract>
+       <description>Use this method to stop applications</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+    <method name="StartChannel" type="ADAPTER">
+       <abstract>Use this method to start a channel</abstract>
+       <description>Use this method to start a channel</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+    <method name="StopChannel" type="ADAPTER">
+       <abstract>Use this method to stop a channel</abstract>
+       <description>Use this method to stop a channel</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+    <method name="GetStatus" type="ADAPTER">
+       <abstract>Use this method to get channel status</abstract>
+       <description>Use this method to get channel status</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+    <method name="DeleteApp" type="ADAPTER">
+       <abstract>Use this method to delete applications</abstract>
+       <description>Use this method to delete applications</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+    <method name="ImportTemplate" type="ADAPTER">
+       <abstract>Use this method to import template from template archive</abstract>
+       <description>Use this method to import templates from template archives</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+    <method name="ImportTemplateV2" type="ADAPTER">
+       <abstract>Use this method to import template from template archive</abstract>
+       <description>Use this method to import templates from template archives</description>
+       <input>
+          <paramlist/>
+          <xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+            <xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+          </xs:schema>
+       </input>
+    </method>
+	<method name="GetIFLComponentDescriptors" type="ADAPTER">
+		<abstract>Use this method to retrieve parameter metadata for all the IFL that can be defined on the server</abstract>
+		<description>Use this method to retrieve parameter metadata for all the IFL that can be defined on the server</description>
+		<input>
+			<paramlist/>
+			<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+				<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+			</xs:schema>
+		</input>
+	</method>
+	
+	<method name="GetApplicationLog" type="ADAPTER">
+		<abstract>Use this method to get log information for the application</abstract>
+		<description>Use this method to get log information for the application</description>
+		<input>
+			<paramlist/>
+			<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+				<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+			</xs:schema>
+		</input>
+	</method>
+	<method name="GetApplicationProperties" type="ADAPTER">
+		<abstract>Use this method to get the properties of the application</abstract>
+		<description>Use this method to get the properties of the application</description>
+		<input>
+			<paramlist/>
+			<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+				<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+			</xs:schema>
+		</input>
+	</method>
+	<method name="GetListApplicationStatus" type="ADAPTER">
+		<abstract>Use this method to retrieve status for the application list</abstract>
+		<description>Use this method to retrieve status for the application list</description>
+		<input>
+			<paramlist/>
+			<xs:schema targetNamespace="http://configsm.ibi.com/xml/server" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified">
+				<xs:import namespace="http://configsm.ibi.com/xml/server" schemaLocation="configsm/schemas/server.xsd"/>
+			</xs:schema>
+		</input>
+	</method>
+	</operations>
+</iWayBusinessService>

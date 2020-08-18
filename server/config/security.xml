@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<security>
+   <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+      <SignedInfo>
+         <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+         <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+         <Reference URI="">
+            <Transforms>
+               <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+            </Transforms>
+            <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+            <DigestValue>ZjsK1eDUioD3CfqvU3glBIpltLs=</DigestValue>
+         </Reference>
+      </SignedInfo>
+      <SignatureValue>N258QoFOiHqQayj6YbhmbePdukoKgaSoQP9ZEi9Xj6u9xO25CUrALRQ5pHN8X3/p3+V/3+2Jv7LA
+l10E5fvgmGwogZPs8NAbG5cze3S5A5On8yYbJkssL1TTwpNECxfQEH5Wc1pdiEZ+YkxxOMRLkx4X
+two+OpSJj7pt/5YYiQE=</SignatureValue>
+   </Signature>
+   <general>
+      <policies>
+         <policy name="minpswd">0</policy>
+      </policies>
+   </general>
+</security>

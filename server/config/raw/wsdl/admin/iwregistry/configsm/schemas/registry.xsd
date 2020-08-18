@@ -1,0 +1,1337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Artem Portnoy (Information Builders) -->
+<schema targetNamespace="http://configsm.ibi.com/xml/registry" xmlns:repo="http://consolesm.ibi.com/xml/repository" xmlns:reg="http://configsm.ibi.com/xml/registry" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<import namespace="http://consolesm.ibi.com/xml/repository" schemaLocation="../../consolesm/schemas/repository.xsd"/>
+	<element name="Authentication">
+		<complexType>
+			<sequence>
+				<element name="User" type="string"/>
+				<element name="Password" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="Component">
+		<complexType>
+			<complexContent>
+				<extension base="repo:ComponentType">
+					<attribute name="type" type="repo:componentTypeEnum" use="required"/>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<complexType name="ComponentFile">
+		<simpleContent>
+			<extension base="string">
+				<attribute name="path" type="string" use="required"/>
+			</extension>
+		</simpleContent>
+	</complexType>
+	<complexType name="AbstractFilter">
+		<attribute name="operation" use="required">
+			<simpleType>
+				<restriction base="string">
+					<enumeration value="equals"/>
+					<enumeration value="contains"/>
+					<enumeration value="is_null"/>
+					<enumeration value="less_than"/>
+					<enumeration value="greater_than"/>
+				</restriction>
+			</simpleType>
+		</attribute>
+		<attribute name="value" type="string" use="optional"/>
+	</complexType>
+	<complexType name="RegistryException">
+		<sequence>
+			<element name="Message" type="string" minOccurs="0"/>
+			<element name="CauseMessage" type="string" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<element name="GeneralRegistryException">
+		<complexType>
+			<complexContent>
+				<extension base="reg:RegistryException">
+					<sequence>
+						<element name="Type" minOccurs="0">
+							<simpleType>
+								<restriction base="string">
+									<enumeration value="ComponentNotFound"/>
+								</restriction>
+							</simpleType>
+						</element>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="ComponentAddException">
+		<complexType>
+			<complexContent>
+				<extension base="reg:RegistryException">
+					<sequence>
+						<element name="Type">
+							<simpleType>
+								<restriction base="string">
+									<enumeration value="DuplicateComponentName"/>
+								</restriction>
+							</simpleType>
+						</element>
+					</sequence>
+				</extension>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="AuthenticationException">
+		<complexType>
+			<complexContent>
+				<extension base="reg:RegistryException"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="OrFilter">
+		<complexType>
+			<sequence>
+				<element ref="reg:ComponentTypeFilter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="reg:ComponentNameFilter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="reg:ComponentGuidFilter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="reg:AndFilter" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AndFilter">
+		<complexType>
+			<sequence>
+				<element ref="reg:ComponentTypeFilter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="reg:ComponentNameFilter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="reg:ComponentGuidFilter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="reg:OrFilter" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="ComponentTypeFilter">
+		<complexType>
+			<complexContent>
+				<extension base="reg:AbstractFilter"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="ComponentNameFilter">
+		<complexType>
+			<complexContent>
+				<extension base="reg:AbstractFilter"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="ComponentGuidFilter">
+		<complexType>
+			<complexContent>
+				<extension base="reg:AbstractFilter"/>
+			</complexContent>
+		</complexType>
+	</element>
+	<element name="FilterContainer">
+		<complexType>
+			<choice>
+				<element ref="reg:ComponentNameFilter" minOccurs="0"/>
+				<element ref="reg:ComponentTypeFilter" minOccurs="0"/>
+				<element ref="reg:ComponentGuidFilter" minOccurs="0"/>
+				<element ref="reg:AndFilter" minOccurs="0"/>
+				<element ref="reg:OrFilter" minOccurs="0"/>
+			</choice>
+		</complexType>
+	</element>
+	<element name="GetComponentsReq">
+		<annotation>
+			<documentation>Use this method to retrieve components with optional filtering</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="reg:FilterContainer" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetComponentsRes">
+		<annotation>
+			<documentation>Use this method to retrieve components with optional filtering</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rAdapter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rChannel" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rDecryptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rEbix" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rEmitter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rEncryptor" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rInlet" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rListener" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rOther" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rOutlet" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rParameter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rPreemitter" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rPreparser" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rProcess" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rRegister" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rReviewer" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rRoute" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rRule" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rSchema" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rService" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rTransform" minOccurs="0" maxOccurs="unbounded"/>
+				<element ref="repo:rTransformer" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetComponentsGenericReq">
+		<annotation>
+			<documentation>Use this method to retrieve components with optional filtering; components are returned in a generic manner</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="reg:FilterContainer" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetComponentsGenericRes">
+		<annotation>
+			<documentation>Use this method to retrieve components with optional filtering; components are returned in a generic manner</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Component" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetComponentFilesReq">
+		<annotation>
+			<documentation>Use this method to retrieve data files associated with a component</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="type" type="repo:componentTypeEnum" use="required"/>
+			<attribute name="uid" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetComponentFilesRes">
+		<annotation>
+			<documentation>Use this method to retrieve data files associated with a component</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="ComponentFile" type="reg:ComponentFile" minOccurs="0" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddAdapterReq">
+		<annotation>
+			<documentation>Use this method to add a new adapter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rAdapter"/>
+				<element name="Descriptor" type="reg:ComponentFile"/>
+				<element name="Keys" type="reg:ComponentFile"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddAdapterRes">
+		<annotation>
+			<documentation>Use this method to add a new adapter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rAdapter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateAdapterReq">
+		<annotation>
+			<documentation>Use this method to update an adapter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rAdapter"/>
+				<element name="Descriptor" type="reg:ComponentFile"/>
+				<element name="Keys" type="reg:ComponentFile"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateAdapterRes">
+		<annotation>
+			<documentation>Use this method to update an adapter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rAdapter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddApplicationArchiveReq">
+		<annotation>
+			<documentation>Use this method to add an application archive</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element name="ApplicationArchiveFile" type="reg:ComponentFile"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddApplicationArchiveRes">
+		<annotation>
+			<documentation>Use this method to add an application archive</documentation>
+		</annotation>
+	</element>
+	<element name="GetChannelReq">
+		<annotation>
+			<documentation>Use this method to retrieve all defined channels</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="uid" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetChannelRes">
+		<annotation>
+			<documentation>Use this method to retrieve all defined channels</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rChannel" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddChannelReq">
+		<annotation>
+			<documentation>Use this method to add a new channel</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rChannel"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddChannelRes">
+		<annotation>
+			<documentation>Use this method to add a new channel</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rChannel"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateChannelReq">
+		<annotation>
+			<documentation>Use this method to update a channel</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rChannel"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateChannelRes">
+		<annotation>
+			<documentation>Use this method to update a channel</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rChannel"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddDecryptorReq">
+		<annotation>
+			<documentation>Use this method to add a new decryptor definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rDecryptor"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddDecryptorRes">
+		<annotation>
+			<documentation>Use this method to add a new decryptor definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rDecryptor"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateDecryptorReq">
+		<annotation>
+			<documentation>Use this method to update a decryptor</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rDecryptor"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateDecryptorRes">
+		<annotation>
+			<documentation>Use this method to update a decryptor</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rDecryptor"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddEbixReq">
+		<annotation>
+			<documentation>Use this method to add a new ebix definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rEbix"/>
+				<element name="EbixFile" type="reg:ComponentFile"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddEbixRes">
+		<annotation>
+			<documentation>Use this method to add a new ebix definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rEbix"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateEbixReq">
+		<annotation>
+			<documentation>Use this method to update an ebix</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rEbix"/>
+				<element name="EbixFile" type="reg:ComponentFile"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateEbixRes">
+		<annotation>
+			<documentation>Use this method to update an ebix</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rEbix"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddEmitterReq">
+		<annotation>
+			<documentation>Use this method to add a new emitter definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rEmitter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddEmitterRes">
+		<annotation>
+			<documentation>Use this method to add a new emitter definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rEmitter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateEmitterReq">
+		<annotation>
+			<documentation>Use this method to update an emitter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rEmitter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateEmitterRes">
+		<annotation>
+			<documentation>Use this method to update an emitter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rEmitter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddEncryptorReq">
+		<annotation>
+			<documentation>Use this method to add a new encryptor definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rEncryptor"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddEncryptorRes">
+		<annotation>
+			<documentation>Use this method to add a new encryptor definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rEncryptor"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateEncryptorReq">
+		<annotation>
+			<documentation>Use this method to update an encryptor</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rEncryptor"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateEncryptorRes">
+		<annotation>
+			<documentation>Use this method to update an encryptor</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rEncryptor"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetInletReq">
+		<annotation>
+			<documentation>Use this method to retrieve all defined inlets</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="uid" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetInletRes">
+		<annotation>
+			<documentation>Use this method to retrieve all defined inlets</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rInlet" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddInletReq">
+		<annotation>
+			<documentation>Use this method to add a new inlet</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rInlet"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddInletRes">
+		<annotation>
+			<documentation>Use this method to add a new inlet</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rInlet"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateInletReq">
+		<annotation>
+			<documentation>Use this method to update a inlet</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rInlet"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateInletRes">
+		<annotation>
+			<documentation>Use this method to update a inlet</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rInlet"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddListenerReq">
+		<annotation>
+			<documentation>Use this method to add a new listener</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rListener"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddListenerRes">
+		<annotation>
+			<documentation>Use this method to add a new listener</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rListener"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateListenerReq">
+		<annotation>
+			<documentation>Use this method to update a listener</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rListener"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateListenerRes">
+		<annotation>
+			<documentation>Use this method to update a listener</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rListener"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddOtherReq">
+		<annotation>
+			<documentation>Use this method to add a new other</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rOther"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddOtherRes">
+		<annotation>
+			<documentation>Use this method to add a new other</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rOther"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateOtherReq">
+		<annotation>
+			<documentation>Use this method to update a other</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rOther"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateOtherRes">
+		<annotation>
+			<documentation>Use this method to update a other</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rOther"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetOutletReq">
+		<annotation>
+			<documentation>Use this method to retrieve all defined outlets</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="uid" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetOutletRes">
+		<annotation>
+			<documentation>Use this method to retrieve all defined outlets</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rOutlet" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddOutletReq">
+		<annotation>
+			<documentation>Use this method to add a new outlet</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rOutlet"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddOutletRes">
+		<annotation>
+			<documentation>Use this method to add a new outlet</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rOutlet"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateOutletReq">
+		<annotation>
+			<documentation>Use this method to update a outlet</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rOutlet"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateOutletRes">
+		<annotation>
+			<documentation>Use this method to update a outlet</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rOutlet"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddParameterReq">
+		<annotation>
+			<documentation>Use this method to add a new parameter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rParameter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddParameterRes">
+		<annotation>
+			<documentation>Use this method to add a new parameter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rParameter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateParameterReq">
+		<annotation>
+			<documentation>Use this method to update a parameter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rParameter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateParameterRes">
+		<annotation>
+			<documentation>Use this method to update a parameter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rParameter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddPreemitterReq">
+		<annotation>
+			<documentation>Use this method to add a new preemitter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rPreemitter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddPreemitterRes">
+		<annotation>
+			<documentation>Use this method to add a new preemitter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rPreemitter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdatePreemitterReq">
+		<annotation>
+			<documentation>Use this method to update a preemitter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rPreemitter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdatePreemitterRes">
+		<annotation>
+			<documentation>Use this method to update a preemitter</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rPreemitter"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddPreparserReq">
+		<annotation>
+			<documentation>Use this method to add a new preparser</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rPreparser"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddPreparserRes">
+		<annotation>
+			<documentation>Use this method to add a new preparser</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rPreparser"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdatePreparserReq">
+		<annotation>
+			<documentation>Use this method to update a preparser</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rPreparser"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdatePreparserRes">
+		<annotation>
+			<documentation>Use this method to update a preparser</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rPreparser"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetProcessReq">
+		<annotation>
+			<documentation>Use this method to retrieve all defined processs</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="uid" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetProcessRes">
+		<annotation>
+			<documentation>Use this method to retrieve all defined processs</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rProcess" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddProcessReq">
+		<annotation>
+			<documentation>Use this method to add a new process</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rProcess"/>
+				<element name="GuiFlow" type="reg:ComponentFile" minOccurs="0"/>
+				<element name="CompiledFlow" type="reg:ComponentFile" minOccurs="0"/>
+				<element name="FlowImage" type="reg:ComponentFile" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddProcessRes">
+		<annotation>
+			<documentation>Use this method to add a new process</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rProcess"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateProcessReq">
+		<annotation>
+			<documentation>Use this method to update a process</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rProcess"/>
+				<element name="GuiFlow" type="reg:ComponentFile" minOccurs="0"/>
+				<element name="CompiledFlow" type="reg:ComponentFile" minOccurs="0"/>
+				<element name="FlowImage" type="reg:ComponentFile" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateProcessRes">
+		<annotation>
+			<documentation>Use this method to update a process</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rProcess"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddRegisterReq">
+		<annotation>
+			<documentation>Use this method to add a new register</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rRegister"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddRegisterRes">
+		<annotation>
+			<documentation>Use this method to add a new register</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rRegister"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateRegisterReq">
+		<annotation>
+			<documentation>Use this method to update a register</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rRegister"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateRegisterRes">
+		<annotation>
+			<documentation>Use this method to update a register</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rRegister"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddReviewerReq">
+		<annotation>
+			<documentation>Use this method to add a new reviewer</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rReviewer"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddReviewerRes">
+		<annotation>
+			<documentation>Use this method to add a new reviewer</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rReviewer"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateReviewerReq">
+		<annotation>
+			<documentation>Use this method to update a reviewer</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rReviewer"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateReviewerRes">
+		<annotation>
+			<documentation>Use this method to update a reviewer</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rReviewer"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetRouteReq">
+		<annotation>
+			<documentation>Use this method to retrieve all defined routes</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="uid" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetRouteRes">
+		<annotation>
+			<documentation>Use this method to retrieve all defined routes</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rRoute" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddRouteReq">
+		<annotation>
+			<documentation>Use this method to add a new route</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rRoute"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddRouteRes">
+		<annotation>
+			<documentation>Use this method to add a new route</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rRoute"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateRouteReq">
+		<annotation>
+			<documentation>Use this method to update a route</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rRoute"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateRouteRes">
+		<annotation>
+			<documentation>Use this method to update a route</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rRoute"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddRuleReq">
+		<annotation>
+			<documentation>Use this method to add a new rule</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rRule"/>
+				<element name="RuleFile" type="reg:ComponentFile"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddRuleRes">
+		<annotation>
+			<documentation>Use this method to add a new rule</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rRule"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateRuleReq">
+		<annotation>
+			<documentation>Use this method to update a rule</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rRule"/>
+				<element name="RuleFile" type="reg:ComponentFile"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateRuleRes">
+		<annotation>
+			<documentation>Use this method to update a rule</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rRule"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddSchemaReq">
+		<annotation>
+			<documentation>Use this method to add a new schema</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rSchema"/>
+				<element name="SchemaFile" type="reg:ComponentFile" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddSchemaRes">
+		<annotation>
+			<documentation>Use this method to add a new schema</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rSchema"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateSchemaReq">
+		<annotation>
+			<documentation>Use this method to update a schema</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rSchema"/>
+				<element name="SchemaFile" type="reg:ComponentFile" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateSchemaRes">
+		<annotation>
+			<documentation>Use this method to update a schema</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rSchema"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetSchemaElementsReq">
+		<annotation>
+			<documentation>Use this method to get information about xml elements associated with this schema definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="uid" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetSchemaElementsRes">
+		<annotation>
+			<documentation>Use this method to get information about xml elements associated with this schema definition</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="SchemaElement" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<attribute name="name" type="string" use="required"/>
+						<attribute name="location" type="string" use="required"/>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddServiceReq">
+		<annotation>
+			<documentation>Use this method to add a new service</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rService"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddServiceRes">
+		<annotation>
+			<documentation>Use this method to add a new service</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rService"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateServiceReq">
+		<annotation>
+			<documentation>Use this method to update a service</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rService"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateServiceRes">
+		<annotation>
+			<documentation>Use this method to update a service</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rService"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddTransformReq">
+		<annotation>
+			<documentation>Use this method to add a new transform</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rTransform"/>
+				<element name="TransformFile" type="reg:ComponentFile" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddTransformRes">
+		<annotation>
+			<documentation>Use this method to add a new transform</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rTransform"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateTransformReq">
+		<annotation>
+			<documentation>Use this method to update a transform</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rTransform"/>
+				<element name="TransformFile" type="reg:ComponentFile" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateTransformRes">
+		<annotation>
+			<documentation>Use this method to update a transform</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rTransform"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="GetTransformerReq">
+		<annotation>
+			<documentation>Use this method to retrieve all defined transformers</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+			</sequence>
+			<attribute name="uid" type="string" use="required"/>
+		</complexType>
+	</element>
+	<element name="GetTransformerRes">
+		<annotation>
+			<documentation>Use this method to retrieve all defined transformers</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rTransformer" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddTransformerReq">
+		<annotation>
+			<documentation>Use this method to add a new transformer</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rTransformer"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="AddTransformerRes">
+		<annotation>
+			<documentation>Use this method to add a new transformer</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rTransformer"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateTransformerReq">
+		<annotation>
+			<documentation>Use this method to update a transformer</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="reg:Authentication" minOccurs="0"/>
+				<element ref="repo:rTransformer"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="UpdateTransformerRes">
+		<annotation>
+			<documentation>Use this method to update a transformer</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element ref="repo:rTransformer"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
